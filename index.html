@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Passos DH | Desenvolvimento Humano e Tecnologia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #fffaf7;
+      --white: #ffffff;
+      --primary: #9d4b6a;
+      --primary-dark: #7d3653;
+      --secondary: #f6b71d;
+      --secondary-soft: #ffe5a2;
+      --text: #2c1d22;
+      --light-text: #6d6166;
+      --border: #f0dfe5;
+      --section: #fff3f6;
+      --shadow: 0 12px 35px rgba(157, 75, 106, 0.08);
+      --radius: 28px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 250, 247, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo img {
+      width: 85px;
+    }
+
+    .logo-text h2 {
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .logo-text p {
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+
+    .menu {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #f4f4f4;
+      color: #2c1d22;
+      box-shadow: var(--shadow);
+  
+    }
+
+ .btn-primary:hover {
+     background: #fdf3cf;
+    }
+
+    .btn-outline {
+      border: 2px solid var(--secondary);
+      color: var(--text);
+      background: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #fdebf0;
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 26px;
+    }
+
+    .hero h1 {
+      font-size: 4.2rem;
+      line-height: 1.05;
+      margin-bottom: 26px;
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--light-text);
+      margin-bottom: 38px;
+      max-width: 620px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -20px;
+      top: 50px;
+      background: white;
+      padding: 26px;
+      border-radius: 24px;
+      width: 240px;
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card h3 {
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .floating-card p {
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+.story-section {
+  padding: 100px 0;
+  background: #fffaf7;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.story-image img {
+  width: 100%;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+.story-content span {
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.story-content h2 {
+  font-size: 3rem;
+  line-height: 1.1;
+  margin: 18px 0 28px;
+}
+
+.story-content p {
+  color: var(--light-text);
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+@media(max-width: 900px) {
+
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-content h2 {
+    font-size: 2.2rem;
+  }
+
+}
+
+    .values {
+      background: var(--section);
+      padding: 45px 0;
+      margin-top: 30px;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .value-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #ffe7ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.6rem;
+    }
+
+    .value-item h3 {
+      margin-bottom: 10px;
+    }
+
+    .value-item p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+
+    .section-header span {
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85rem;
+    }
+
+    .section-header h2 {
+      font-size: 3rem;
+      margin: 14px 0 20px;
+      line-height: 1.1;
+    }
+
+    .section-header h2 span {
+      color: var(--primary);
+      text-transform: none;
+      letter-spacing: normal;
+      font-size: inherit;
+    }
+
+    .section-header p {
+      color: var(--light-text);
+      max-width: 720px;
+      font-size: 1.05rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      background: #ffe8a8;
+      font-size: 1.5rem;
+    }
+
+    .service-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      color: var(--light-text);
+      margin-bottom: 20px;
+    }
+
+    .service-card a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .projects {
+      background: var(--section);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+     padding: 20px 0;
+     margin-top: -40px;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 40px;
+      padding: 70px;
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      font-size: 2.7rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .cta-box p {
+      opacity: 0.9;
+      max-width: 680px;
+    }
+
+    footer {
+  background: white;
+  padding: 35px 0 20px;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  margin-top: 30px;
+    }
+
+    .footer-grid {
+      display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  transform: translateY(-20px);
+    }
+
+    footer p,
+    footer a {
+      color: var(--light-text);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f4f4f4;
+  border: 2px solid #f6b71d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.3s;
+
+}
+.social-icons a:nth-child(1) {
+  color: #E1306C;
+}
+
+.social-icons a:nth-child(2) {
+  color: #25D366;
+}
+
+.social-icons a:hover {
+  background: #fdf3cf;
+  transform: translateY(-4px);
+}
+
+    @media(max-width: 1000px) {
+
+      .hero-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid,
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .floating-card {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+    }
+
+    @media(max-width: 768px) {
+
+      .menu {
+        display: none;
+      }
+
+      .hero h1,
+      .section-header h2,
+      .cta-box h2 {
+        font-size: 2.2rem;
+      }
+
+      .projects-grid,
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .cta-box {
+        padding: 45px 55px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+
+      <div class="logo">
+        <img src="logo.png" alt="Logo Passos DH">
+
+        <div class="logo-text">
+          <h2>PASSOS DH</h2>
+          <p>Desenvolvimento Humano e Tecnologia</p>
+        </div>
+      </div>
+
+      <div class="menu">
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#servicos">Como posso ajudar</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Conteúdos</a>
+
+        <a href="https://wa.me/5511982480846" class="btn btn-primary">
+          Fale comigo agora
+        </a>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="hero-tag">
+        EDUCAÇÃO • TECNOLOGIA • DESENVOLVIMENTO HUMANO
+      </div>
+
+      <h1>
+        Transformo conhecimento em <span>presença digital</span> e crescimento real.
+      </h1>
+
+      <p>
+        Ajudando mulheres a desenvolverem habilidades, criarem conteúdo estratégico e usarem a tecnologia a seu favor para viver com mais propósito e liberdade.
+      </p>
+
+      <div class="hero-buttons">
+
+        
+        
+
+      </div>
+
+    </div>
+
+    <div class="hero-image">
+      <img src="cleia.png" alt="Cléia Passos">
+
+      
+         
+    </div>
+
+  </div>
+</section>
+
+<section class="story-section">
+
+  <div class="container story-grid">
+
+    <div class="story-image">
+      <img src="cleia2.jpg" alt="Trajetória de Cléia Passos">
+    </div>
+
+    <div class="story-content">
+
+      <span>MINHA TRAJETÓRIA</span>
+
+      <h2>
+        A educação e a tecnologia transformaram minha trajetória.
+      </h2>
+
+      <p>
+        Minha caminhada nunca foi sobre atalhos.
+        Foi sobre construção.
+      </p>
+
+      <p>
+        Ao longo dos anos, fui unindo educação, empreendedorismo,
+        desenvolvimento humano e tecnologia para criar novas
+        possibilidades para mim e para outras mulheres.
+      </p>
+
+      <p>
+        Já atuei com liderança de equipes, vendas diretas,
+        formação de pessoas, projetos educacionais
+        e criação de conteúdo estratégico.
+      </p>
+
+      <p>
+        Em muitos momentos precisei aprender enquanto fazia,
+        me reinventar, estudar novamente e transformar desafios
+        em crescimento.
+      </p>
+
+      <p>
+        Hoje uso toda essa experiência para ajudar mulheres
+        e projetos a desenvolverem clareza, presença digital
+        e estratégias mais humanas.
+      </p>
+
+      <p>
+        Porque acredito que conhecimento só faz sentido
+        quando transforma vidas na prática.
+      </p>
+
+    </div>
+
+  </div>
+
+
+<section id="servicos">
+  <div class="container">
+
+    <div class="section-header">
+      <span>Como posso ajudar</span>
+
+      <h2>
+        Soluções para o seu <span>crescimento</span> pessoal e digital.
+      </h2>
+
+      <p>
+        Mentorias, criação de conteúdo, desenvolvimento de páginas e uso inteligente da tecnologia para impulsionar seus projetos e sua presença digital.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">👩‍🏫</div>
+        <h3>Mentorias</h3>
+        <p>
+          Clareza, organização, estratégia e desenvolvimento pessoal para mulheres empreendedoras.
+        </p>
+        <a href="#">Saiba mais →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">✍️</div>
+        <h3>Criação de Conteúdo</h3>
+        <p>
+          Conteúdo estratégico que conecta, posiciona e atrai as pessoas certas.
+        </p>
+        <a href="#">Saiba mais →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">💡</div>
+        <h3>Landing Pages</h3>
+        <p>
+          Páginas estratégicas que comunicam, encantam e convertem com identidade.
+        </p>
+        <a href="#">Saiba mais →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <h3>IA e Produtividade</h3>
+        <p>
+          Aplicação prática da IA e ferramentas digitais para mais produtividade e leveza.
+        </p>
+        <a href="#">Saiba mais →</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="projects" id="projetos">
+  <div class="container">
+
+    <div class="section-header">
+      <span>Projetos & Experiência</span>
+
+      <h2>
+        Construindo soluções que geram <span>impacto real.</span>
+      </h2>
+
+      <p>
+        Atuo na educação, na criação de conteúdo e no desenvolvimento de soluções digitais que ajudam pessoas e projetos a alcançarem mais.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+       
+        <div class="project-content">
+          <h3>Landing Pages</h3>
+          <p>Páginas estratégicas que comunicam e convertem.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+       
+        <div class="project-content">
+          <h3>Conteúdo & Social Media</h3>
+          <p>Estratégia e criação de conteúdo para marcas e profissionais.</p>
+        </div>
+      </div>
+
+      <div class="project-card">
+       
+        <div class="project-content">
+          <h3>Desenvolvimento Web</h3>
+          <p>Soluções digitais com foco em experiência e resultado.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <div class="container">
+
+    <div class="cta-box">
+
+      <div>
+        <h2>
+          Vamos conversar sobre o seu próximo passo?
+        </h2>
+
+        <p>
+          Estou aqui para ajudar a transformar ideias em ação, conhecimento em posicionamento e propósito em resultados.
+        </p>
+      </div>
+
+      <a href="https://wa.me/5511982480846" class="btn btn-outline">
+        Fale comigo agora
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-grid">
+
+    <div class="logo">
+      <img src="logo.png" alt="Logo Passos DH">
+
+      <div class="logo-text">
+        <h2>PASSOS DH</h2>
+        <p>Desenvolvimento Humano e Tecnologia</p>
+      </div>
+    </div>
+
+    <div>
+     <div class="social-icons">
+
+  <a href="https://instagram.com/passosdh" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a href="https://wa.me/5511982480846" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+</div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
